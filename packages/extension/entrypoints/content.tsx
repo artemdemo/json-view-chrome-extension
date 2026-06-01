@@ -1,5 +1,5 @@
 import '../styles/content.css';
-import {renderJsonViewer} from '../src/jview';
+import {renderJsonViewer} from '@jview/view';
 
 const JSON_MIME_TYPE = 'application/json';
 

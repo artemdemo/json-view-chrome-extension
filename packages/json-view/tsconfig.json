@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "jsx": "react-jsx",
     // Environment setup & latest features
-    "types": ["bun"],
+    // "types": ["bun"],
     "lib": ["ESNext"],
     "target": "ESNext",
     "module": "Preserve",
