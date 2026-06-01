@@ -2,19 +2,12 @@ import {
   useEffect,
   useMemo,
   useRef,
-  useState,
-  type MouseEventHandler,
   type ReactNode,
 } from 'react';
 
 import { createRoot } from 'react-dom/client';
 
-const COPY_RESET_DELAY_MS = 1_500;
-
-type CopyState = 'idle' | 'copied' | 'failed';
-
 function JsonViewer({ json, prettyJson, source }: JsonViewerProps) {
-  const [copyState, setCopyState] = useState<CopyState>('idle');
   const copyResetTimeout = useRef<number | undefined>(undefined);
   const highlightedJson = useMemo(
     () => renderHighlightedJson(prettyJson),
@@ -29,30 +22,6 @@ function JsonViewer({ json, prettyJson, source }: JsonViewerProps) {
     };
   }, []);
 
-  const showCopyState = (nextCopyState: CopyState) => {
-    setCopyState(nextCopyState);
-
-    if (copyResetTimeout.current !== undefined) {
-      window.clearTimeout(copyResetTimeout.current);
-    }
-
-    copyResetTimeout.current = window.setTimeout(() => {
-      setCopyState('idle');
-    }, COPY_RESET_DELAY_MS);
-  };
-
-  const handleCopy: MouseEventHandler<HTMLButtonElement> = async () => {
-    try {
-      await navigator.clipboard.writeText(prettyJson);
-      showCopyState('copied');
-    } catch {
-      showCopyState(fallbackCopy(prettyJson) ? 'copied' : 'failed');
-    }
-  };
-
-  const copyLabel =
-    copyState === 'copied' ? 'Copied' : copyState === 'failed' ? 'Failed' : 'Copy';
-
   return (
     <main className="json-viewer-root" data-json-viewer="true">
       <header className="json-viewer-toolbar">
@@ -62,10 +31,6 @@ function JsonViewer({ json, prettyJson, source }: JsonViewerProps) {
             {getJsonKind(json)} - {formatBytes(getByteLength(source))}
           </p>
         </div>
-
-        <button className="json-viewer-copy" type="button" onClick={handleCopy}>
-          {copyLabel}
-        </button>
       </header>
 
       <pre className="json-viewer-pre">
@@ -81,7 +46,6 @@ type JsonViewerProps = {
   prettyJson: string;
   source: string;
 };
-
 
 
 function getJsonKind(value: unknown): string {
@@ -202,22 +166,6 @@ function isHttpUrl(value: string): boolean {
     return url.protocol === 'http:' || url.protocol === 'https:';
   } catch {
     return false;
-  }
-}
-
-function fallbackCopy(value: string): boolean {
-  const textarea = document.createElement('textarea');
-  textarea.value = value;
-  textarea.setAttribute('readonly', 'true');
-  textarea.className = 'json-viewer-copy-buffer';
-
-  document.body.append(textarea);
-  textarea.select();
-
-  try {
-    return document.execCommand('copy');
-  } finally {
-    textarea.remove();
   }
 }
 

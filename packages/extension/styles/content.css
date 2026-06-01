@@ -54,31 +54,6 @@ html.json-view-extension-document body {
   line-height: 1.35;
 }
 
-.json-viewer-copy {
-  flex: 0 0 auto;
-  min-width: 72px;
-  border: 1px solid #b9c1cc;
-  border-radius: 6px;
-  padding: 6px 10px;
-  background: #ffffff;
-  color: #17202a;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 650;
-  line-height: 1.2;
-  cursor: pointer;
-}
-
-.json-viewer-copy:hover {
-  border-color: #6f7a88;
-  background: #f0f3f6;
-}
-
-.json-viewer-copy:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 2px;
-}
-
 .json-viewer-pre {
   box-sizing: border-box;
   min-width: max-content;
@@ -131,15 +106,6 @@ html.json-view-extension-document body {
   color: #0f766e;
 }
 
-.json-viewer-copy-buffer {
-  position: fixed;
-  top: -1000px;
-  left: -1000px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
 @media (prefers-color-scheme: dark) {
   html.json-view-extension-document,
   html.json-view-extension-document body {
@@ -159,17 +125,6 @@ html.json-view-extension-document body {
 
   .json-viewer-summary p {
     color: #9ba4b0;
-  }
-
-  .json-viewer-copy {
-    border-color: #46505c;
-    background: #1a1f25;
-    color: #e6e8eb;
-  }
-
-  .json-viewer-copy:hover {
-    border-color: #7c8795;
-    background: #242a31;
   }
 
   .json-token-key {
