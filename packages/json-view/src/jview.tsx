@@ -4,8 +4,8 @@ import {
   useRef,
   type ReactNode,
 } from 'react';
-
 import { createRoot } from 'react-dom/client';
+import './jview.css';
 
 function JsonViewer({ json, prettyJson, source }: JsonViewerProps) {
   const copyResetTimeout = useRef<number | undefined>(undefined);
@@ -26,7 +26,6 @@ function JsonViewer({ json, prettyJson, source }: JsonViewerProps) {
     <main className="json-viewer-root" data-json-viewer="true">
       <header className="json-viewer-toolbar">
         <div className="json-viewer-summary">
-          <h1>JSON</h1>
           <p>
             {getJsonKind(json)} - {formatBytes(getByteLength(source))}
           </p>
