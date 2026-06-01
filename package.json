@@ -11,6 +11,7 @@
   },
   "scripts": {
     "dev": "npm run dev -w packages/extension",
-    "build": "npm run build -w packages/extension"
+    "build": "npm run build -w packages/extension",
+    "typecheck": "npm run typecheck -ws"
   }
 }

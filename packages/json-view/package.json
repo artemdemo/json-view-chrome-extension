@@ -1,6 +1,5 @@
 {
   "name": "@jview/view",
-  "description": "Pretty-print browser-rendered application/json responses.",
   "private": true,
   "version": "1.0.0",
   "type": "module",
