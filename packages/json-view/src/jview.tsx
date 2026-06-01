@@ -7,6 +7,12 @@ import {
 import { createRoot } from 'react-dom/client';
 import './jview.css';
 
+type JsonViewerProps = {
+  json: unknown;
+  prettyJson: string;
+  source: string;
+};
+
 function JsonViewer({ json, prettyJson, source }: JsonViewerProps) {
   const copyResetTimeout = useRef<number | undefined>(undefined);
   const highlightedJson = useMemo(
@@ -38,14 +44,6 @@ function JsonViewer({ json, prettyJson, source }: JsonViewerProps) {
     </main>
   );
 }
-
-
-type JsonViewerProps = {
-  json: unknown;
-  prettyJson: string;
-  source: string;
-};
-
 
 function getJsonKind(value: unknown): string {
   if (Array.isArray(value)) {
