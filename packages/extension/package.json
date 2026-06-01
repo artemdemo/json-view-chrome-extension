@@ -1,8 +1,8 @@
 {
-  "name": "json-view-chrome-extension",
+  "name": "@jview/extension",
   "description": "Pretty-print browser-rendered application/json responses.",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",
