@@ -120,6 +120,17 @@ html.json-view-extension-document body {
   color: #667085;
 }
 
+.json-token-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.json-token-link:hover {
+  color: #0f766e;
+}
+
 .json-viewer-copy-buffer {
   position: fixed;
   top: -1000px;
@@ -179,5 +190,9 @@ html.json-view-extension-document body {
 
   .json-token-null {
     color: #9ba4b0;
+  }
+
+  .json-token-link:hover {
+    color: #99f6e4;
   }
 }
