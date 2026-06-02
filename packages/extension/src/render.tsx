@@ -1,7 +1,14 @@
 import { JsonViewer } from '@jview/view';
 import { createRoot } from 'react-dom/client';
+import { type JsonViewerOptions } from './options';
+import { UserSettings } from './UserSettings';
 
-export function renderJsonViewer(jsonStr: string, json: unknown, source: string) {
+export function renderJsonViewer(
+  jsonStr: string,
+  json: unknown,
+  source: string,
+  initialOptions: JsonViewerOptions,
+) {
   document.documentElement.classList.add('json-view-extension-document');
 
   const root = document.createElement('div');
@@ -9,6 +16,8 @@ export function renderJsonViewer(jsonStr: string, json: unknown, source: string)
 
   document.body.replaceChildren(root);
   createRoot(root).render(
-    <JsonViewer json={json} jsonStr={jsonStr} source={source} />,
+    <UserSettings initialSettings={initialOptions}>
+      <JsonViewer json={json} jsonStr={jsonStr} source={source} />
+    </UserSettings>,
   );
 }

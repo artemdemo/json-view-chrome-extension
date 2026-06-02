@@ -17,6 +17,26 @@
   line-height: 1.45;
 }
 
+.popup-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #d7dce2;
+  color: #17202a;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.popup-option input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   .popup h1 {
     color: #f4f6f8;
@@ -24,5 +44,10 @@
 
   .popup p {
     color: #aeb7c2;
+  }
+
+  .popup-option {
+    border-top-color: #2f3742;
+    color: #f4f6f8;
   }
 }

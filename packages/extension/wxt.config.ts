@@ -7,5 +7,6 @@ export default defineConfig({
   manifest: {
     name: 'JSON View',
     description: 'Pretty-print browser-rendered application/json responses.',
+    permissions: ['storage'],
   },
 });

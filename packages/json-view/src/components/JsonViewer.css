@@ -67,6 +67,12 @@ html.json-view-extension-document body {
   white-space: pre;
 }
 
+.json-viewer-pre--wrap {
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .json-token-key {
   color: #7a4f00;
 }
