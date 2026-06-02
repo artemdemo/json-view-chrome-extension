@@ -8,11 +8,11 @@ export const getJsonKind = (value: unknown): string => {
   }
 
   return value === null ? 'null' : typeof value;
-}
+};
 
 export const getByteLength = (value: string): number => {
   return new Blob([value]).size;
-}
+};
 
 export const formatBytes = (bytes: number): string => {
   if (bytes < 1024) {
@@ -29,4 +29,4 @@ export const formatBytes = (bytes: number): string => {
   }
 
   return `${size.toFixed(size >= 10 ? 1 : 2)} ${units[unitIndex]}`;
-}
+};

@@ -10,7 +10,7 @@ export const getJsonStringUrl = (token: string): string | undefined => {
   } catch {
     return undefined;
   }
-}
+};
 
 const isHttpUrl = (value: string): boolean => {
   try {
@@ -19,4 +19,4 @@ const isHttpUrl = (value: string): boolean => {
   } catch {
     return false;
   }
-}
+};

@@ -21,11 +21,11 @@ export const prettifyJsonDocument = () => {
     console.error(`Can't parse provided JSON`);
     console.error(e);
   }
-}
+};
 
 const normalizeMimeType = (contentType: string): string => {
   return contentType.split(';', 1)[0].trim().toLowerCase();
-}
+};
 
 const getDocumentText = (doc: Document): string => {
   const { body } = doc;
@@ -39,4 +39,4 @@ const getDocumentText = (doc: Document): string => {
   }
 
   return body.textContent ?? '';
-}
+};
