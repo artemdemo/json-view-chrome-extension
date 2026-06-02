@@ -1,8 +1,5 @@
+import type { UserSettingsValue } from '@jview/definitions';
 import { createContext, useContext } from 'react';
-
-export type UserSettingsValue = {
-  wordWrap: boolean;
-};
 
 export const DEFAULT_USER_SETTINGS: UserSettingsValue = {
   wordWrap: false,

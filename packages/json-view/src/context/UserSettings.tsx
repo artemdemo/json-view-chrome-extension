@@ -1,10 +1,10 @@
 import {
   UserSettingsContext,
-  type UserSettingsValue,
 } from '@jview/view';
 import { type FC, type PropsWithChildren, useEffect, useState } from 'react';
 import { browser } from 'wxt/browser';
-import { getWordWrapFromStorageChange } from './options';
+import { UserSettingsValue } from '@jview/definitions';
+import { getWordWrapFromStorageChange } from '../../../extension/src/options';
 
 type UserSettingsProps = PropsWithChildren<{
   initialSettings: UserSettingsValue;

@@ -1,13 +1,12 @@
-import { JsonViewer } from '@jview/view';
+import { UserSettingsValue } from '@jview/definitions';
+import { JsonViewer, UserSettings } from '@jview/view';
 import { createRoot } from 'react-dom/client';
-import { type JsonViewerOptions } from './options';
-import { UserSettings } from './UserSettings';
 
 export function renderJsonViewer(
   jsonStr: string,
   json: unknown,
   source: string,
-  initialOptions: JsonViewerOptions,
+  initialOptions: UserSettingsValue,
 ) {
   document.documentElement.classList.add('json-view-extension-document');
 
