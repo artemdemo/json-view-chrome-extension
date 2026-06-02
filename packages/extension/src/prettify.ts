@@ -1,4 +1,4 @@
-import {renderJsonViewer} from '@jview/view';
+import { renderJsonViewer } from './render';
 
 const JSON_MIME_TYPE = 'application/json';
 

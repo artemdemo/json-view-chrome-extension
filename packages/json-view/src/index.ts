@@ -1,1 +1,1 @@
-export * from './jview';
+export { JsonViewer } from './components/JsonViewer';

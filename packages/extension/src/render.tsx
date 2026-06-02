@@ -1,5 +1,5 @@
+import { JsonViewer } from '@jview/view';
 import { createRoot } from 'react-dom/client';
-import { JsonViewer } from './components/JsonViewer';
 
 export function renderJsonViewer(jsonStr: string, json: unknown, source: string) {
   document.documentElement.classList.add('json-view-extension-document');
