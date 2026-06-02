@@ -4,6 +4,8 @@ import {
 import { type FC, type PropsWithChildren, useEffect, useState } from 'react';
 import { browser } from 'wxt/browser';
 import { UserSettingsValue } from '@jview/definitions';
+
+// ToDo: import across the packages - don't do it
 import { getWordWrapFromStorageChange } from '../../../extension/src/options';
 
 type UserSettingsProps = PropsWithChildren<{
@@ -35,6 +37,7 @@ export const UserSettings: FC<UserSettingsProps> = ({
       }));
     };
 
+    // ToDo: I think this is concern of `@jview/storage` package
     browser.storage.onChanged.addListener(handleStorageChange);
 
     return () => {
