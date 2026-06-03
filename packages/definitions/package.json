@@ -10,7 +10,7 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@jview/definitions": "*"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "typescript": "^5.9.3"

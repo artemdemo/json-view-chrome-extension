@@ -1,14 +1,14 @@
-import type { UserSettingsValue } from '@jview/definitions';
+import type { UserSettings } from '@jview/definitions';
 import { createContext, useContext } from 'react';
 
-export const DEFAULT_USER_SETTINGS: UserSettingsValue = {
+export const DEFAULT_USER_SETTINGS: UserSettings = {
   wordWrap: false,
 };
 
-export const UserSettingsContext = createContext<UserSettingsValue>(
+export const UserSettingsContext = createContext<UserSettings>(
   DEFAULT_USER_SETTINGS,
 );
 
-export function useUserSettings(): UserSettingsValue {
+export function useUserSettings(): UserSettings {
   return useContext(UserSettingsContext);
 }

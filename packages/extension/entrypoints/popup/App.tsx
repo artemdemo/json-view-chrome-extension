@@ -1,39 +1,20 @@
-import { useEffect, useState, type ChangeEvent } from 'react';
-import {
-  DEFAULT_JSON_VIEWER_OPTIONS,
-  getJsonViewerOptions,
-  setWordWrapOption,
-} from '@/src/options';
+import { type ChangeEvent } from 'react';
+import { useUserSettings } from '@jview/view';
+import { saveUserSettings } from '@jview/storage';
 import './App.css';
 
 function App() {
-  const [wordWrap, setWordWrap] = useState(
-    DEFAULT_JSON_VIEWER_OPTIONS.wordWrap,
-  );
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    void getJsonViewerOptions().then((options) => {
-      if (!isMounted) {
-        return;
-      }
-
-      setWordWrap(options.wordWrap);
-      setIsLoaded(true);
-    });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const userSettings = useUserSettings();
 
   const handleWordWrapChange = (event: ChangeEvent<HTMLInputElement>) => {
     const nextWordWrap = event.target.checked;
 
-    setWordWrap(nextWordWrap);
-    void setWordWrapOption(nextWordWrap);
+    void saveUserSettings({
+      ...userSettings,
+      ...{
+        wordWrap: nextWordWrap,
+      },
+    });
   };
 
   return (
@@ -43,8 +24,7 @@ function App() {
       <label className="popup-option">
         <span>Word Wrap</span>
         <input
-          checked={wordWrap}
-          disabled={!isLoaded}
+          checked={userSettings.wordWrap}
           onChange={handleWordWrapChange}
           type="checkbox"
         />
