@@ -1,8 +1,8 @@
-import { type ChangeEvent } from "react";
-import { saveUserSettings, useStorage } from "@jview/storage";
-import "./App.css";
+import { saveUserSettings, useStorage } from '@jview/storage';
+import { type ChangeEvent } from 'react';
+import './Popup.css';
 
-function App() {
+export function Popup() {
   const userSettings = useStorage();
 
   const handleWordWrapChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -10,9 +10,7 @@ function App() {
 
     void saveUserSettings({
       ...userSettings,
-      ...{
-        wordWrap: nextWordWrap,
-      },
+      wordWrap: nextWordWrap,
     });
   };
 
@@ -31,5 +29,3 @@ function App() {
     </main>
   );
 }
-
-export default App;

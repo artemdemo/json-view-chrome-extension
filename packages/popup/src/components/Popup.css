@@ -1,3 +1,33 @@
+:root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #17202a;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .popup {
   width: 260px;
   padding: 16px;
@@ -38,6 +68,15 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  :root {
+    color: #f4f6f8;
+    background-color: #111418;
+  }
+
+  body {
+    background: #111418;
+  }
+
   .popup h1 {
     color: #f4f6f8;
   }
