@@ -7,9 +7,9 @@ import {
 } from 'react';
 import { formatBytes, getByteLength, getJsonKind } from '../services/summary';
 import { getJsonStringUrl } from '../services/url';
-import { useUserSettings } from '../user-settings';
 
 import './JsonViewer.css';
+import { useStorage } from '@jview/storage';
 
 type JsonViewerProps = {
   json: unknown;
@@ -22,7 +22,7 @@ export const JsonViewer: FC<JsonViewerProps> = ({
   jsonStr,
   source,
 }) => {
-  const { wordWrap } = useUserSettings();
+  const { wordWrap } = useStorage();
   const copyResetTimeout = useRef<number | undefined>(undefined);
   const highlightedJson = useMemo(
     () => renderHighlightedJson(jsonStr),

@@ -1,5 +1,4 @@
-import type { UserSettings } from '@jview/definitions';
-import { JsonViewer, UserSettingsProvider } from '@jview/view';
+import { JsonViewer } from '@jview/view';
 import { createRoot } from 'react-dom/client';
 
 export function renderJsonViewer(
@@ -14,8 +13,6 @@ export function renderJsonViewer(
 
   document.body.replaceChildren(root);
   createRoot(root).render(
-    <UserSettingsProvider>
-      <JsonViewer json={json} jsonStr={jsonStr} source={source} />
-    </UserSettingsProvider>,
+    <JsonViewer json={json} jsonStr={jsonStr} source={source} />,
   );
 }

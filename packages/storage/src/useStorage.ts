@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { type Browser, browser } from 'wxt/browser';
 import {
   defaultUserSettings,
+  loadUserSettings,
   parseUserSettings,
   USER_SETTINGS_STORAGE_KEY,
 } from './storage';
@@ -40,6 +41,12 @@ export const useStorage = () => {
       browser.storage.onChanged.removeListener(handleStorageChange);
     };
   }, [handleStorageChange]);
+
+  useEffect(() => {
+    loadUserSettings().then((data) => {
+      setSettings(data);
+    });
+  }, []);
 
   return settings;
 };

@@ -1,10 +1,9 @@
 import { type ChangeEvent } from 'react';
-import { useUserSettings } from '@jview/view';
-import { saveUserSettings } from '@jview/storage';
+import { saveUserSettings, useStorage } from '@jview/storage';
 import './App.css';
 
 function App() {
-  const userSettings = useUserSettings();
+  const userSettings = useStorage();
 
   const handleWordWrapChange = (event: ChangeEvent<HTMLInputElement>) => {
     const nextWordWrap = event.target.checked;
