@@ -1,6 +1,6 @@
-import { type ChangeEvent } from 'react';
-import { saveUserSettings, useStorage } from '@jview/storage';
-import './App.css';
+import { type ChangeEvent } from "react";
+import { saveUserSettings, useStorage } from "@jview/storage";
+import "./App.css";
 
 function App() {
   const userSettings = useStorage();

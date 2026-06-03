@@ -28,7 +28,7 @@ export const useStorage = () => {
 
       setSettings((currentSettings) => ({
         ...currentSettings,
-        ...parseUserSettings(changes[USER_SETTINGS_STORAGE_KEY]),
+        ...parseUserSettings(changes[USER_SETTINGS_STORAGE_KEY].newValue),
       }));
     },
     [],

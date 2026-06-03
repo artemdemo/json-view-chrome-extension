@@ -10,9 +10,7 @@ export const defaultUserSettings: UserSettings = {
 export async function saveUserSettings(settings: UserSettings): Promise<void> {
   try {
     await browser.storage?.local?.set({
-      [USER_SETTINGS_STORAGE_KEY]: JSON.stringify({
-        ...settings,
-      }),
+      [USER_SETTINGS_STORAGE_KEY]: settings,
     });
   } catch (e) {
     console.error(e);
@@ -31,10 +29,25 @@ export async function loadUserSettings(): Promise<UserSettings> {
 
 export const parseUserSettings = (data: unknown): UserSettings => {
   try {
-    const userSettings = UserSettingsSchema.parse(data);
+    const userSettings = UserSettingsSchema.parse(getUserSettingsValue(data));
     return userSettings;
   } catch (e) {
     console.error(e);
   }
   return defaultUserSettings;
 };
+
+const getUserSettingsValue = (data: unknown): unknown => {
+  if (typeof data === 'string') {
+    return JSON.parse(data);
+  }
+
+  if (isRecord(data) && USER_SETTINGS_STORAGE_KEY in data) {
+    return getUserSettingsValue(data[USER_SETTINGS_STORAGE_KEY]);
+  }
+
+  return data;
+};
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null;

@@ -1,15 +1,9 @@
-import {
-  FC,
-  useEffect,
-  useMemo,
-  useRef,
-  type ReactNode,
-} from 'react';
-import { formatBytes, getByteLength, getJsonKind } from '../services/summary';
-import { getJsonStringUrl } from '../services/url';
+import { FC, useEffect, useMemo, useRef, type ReactNode } from "react";
+import { formatBytes, getByteLength, getJsonKind } from "../services/summary";
+import { getJsonStringUrl } from "../services/url";
 
-import './JsonViewer.css';
-import { useStorage } from '@jview/storage';
+import "./JsonViewer.css";
+import { useStorage } from "@jview/storage";
 
 type JsonViewerProps = {
   json: unknown;
@@ -17,11 +11,7 @@ type JsonViewerProps = {
   source: string;
 };
 
-export const JsonViewer: FC<JsonViewerProps> = ({
-  json,
-  jsonStr,
-  source,
-}) => {
+export const JsonViewer: FC<JsonViewerProps> = ({ json, jsonStr, source }) => {
   const { wordWrap } = useStorage();
   const copyResetTimeout = useRef<number | undefined>(undefined);
   const highlightedJson = useMemo(
@@ -49,16 +39,14 @@ export const JsonViewer: FC<JsonViewerProps> = ({
 
       <pre
         className={
-          wordWrap
-            ? 'json-viewer-pre json-viewer-pre--wrap'
-            : 'json-viewer-pre'
+          wordWrap ? "json-viewer-pre json-viewer-pre--wrap" : "json-viewer-pre"
         }
       >
         <code>{highlightedJson}</code>
       </pre>
     </main>
   );
-}
+};
 
 function renderHighlightedJson(json: string): ReactNode[] {
   const tokenPattern =
@@ -86,17 +74,17 @@ function renderHighlightedJson(json: string): ReactNode[] {
 }
 
 function renderJsonToken(token: string, key: number): ReactNode {
-  let tokenType = 'number';
+  let tokenType = "number";
 
   if (token.startsWith('"')) {
-    tokenType = token.endsWith(':') ? 'key' : 'string';
-  } else if (token === 'true' || token === 'false') {
-    tokenType = 'boolean';
-  } else if (token === 'null') {
-    tokenType = 'null';
+    tokenType = token.endsWith(":") ? "key" : "string";
+  } else if (token === "true" || token === "false") {
+    tokenType = "boolean";
+  } else if (token === "null") {
+    tokenType = "null";
   }
 
-  if (tokenType === 'string') {
+  if (tokenType === "string") {
     const href = getJsonStringUrl(token);
 
     if (href !== undefined) {
