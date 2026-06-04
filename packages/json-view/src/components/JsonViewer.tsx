@@ -15,19 +15,10 @@ export const JsonViewer: FC<JsonViewerProps> = ({ json, jsonStr, source }) => {
   const {
     settings: { wordWrap },
   } = useStorage();
-  const copyResetTimeout = useRef<number | undefined>(undefined);
   const highlightedJson = useMemo(
     () => renderHighlightedJson(jsonStr),
     [jsonStr],
   );
-
-  useEffect(() => {
-    return () => {
-      if (copyResetTimeout.current !== undefined) {
-        window.clearTimeout(copyResetTimeout.current);
-      }
-    };
-  }, []);
 
   return (
     <main className="json-viewer-root" data-json-viewer="true">
