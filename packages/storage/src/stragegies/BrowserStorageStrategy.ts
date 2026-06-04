@@ -60,16 +60,3 @@ export class BrowserStorageStrategy implements IStorageStrategy {
     };
   }
 }
-
-export const browserStorageStrategy = new BrowserStorageStrategy();
-
-export const saveUserSettings = (settings: UserSettings): Promise<void> =>
-  browserStorageStrategy.saveUserSettings(settings);
-
-export const loadUserSettings = (): Promise<UserSettings> =>
-  browserStorageStrategy.loadUserSettings();
-
-export const subscribeToUserSettingsChanges = (
-  listener: UserSettingsChangeListener,
-): (() => void) =>
-  browserStorageStrategy.subscribeToUserSettingsChanges(listener);
