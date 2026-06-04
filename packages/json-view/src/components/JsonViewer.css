@@ -1,0 +1,151 @@
+html.json-view-extension-document,
+html.json-view-extension-document body {
+  min-height: 100%;
+  margin: 0;
+  background: #f6f7f9;
+  color: #17202a;
+}
+
+html.json-view-extension-document body {
+  overflow: auto;
+}
+
+.json-viewer-root {
+  min-height: 100vh;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.json-viewer-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 18px;
+  border-bottom: 1px solid #d7dce2;
+  background: rgba(246, 247, 249, 0.94);
+  backdrop-filter: blur(12px);
+}
+
+.json-viewer-summary {
+  min-width: 0;
+}
+
+.json-viewer-summary p {
+  margin: 2px 0 0;
+  color: #5d6877;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.json-viewer-pre {
+  box-sizing: border-box;
+  min-width: max-content;
+  margin: 0;
+  padding: 18px;
+  color: #17202a;
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  tab-size: 2;
+  white-space: pre;
+}
+
+.json-viewer-pre--wrap {
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.json-token-key {
+  color: #7a4f00;
+}
+
+.json-token-string {
+  color: #12634f;
+}
+
+.json-token-number {
+  color: #164da3;
+}
+
+.json-token-boolean {
+  color: #8f3f71;
+}
+
+.json-token-null {
+  color: #667085;
+}
+
+.json-token-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.json-token-link:hover {
+  color: #0f766e;
+}
+
+@media (prefers-color-scheme: dark) {
+  html.json-view-extension-document,
+  html.json-view-extension-document body {
+    background: #111418;
+    color: #e6e8eb;
+  }
+
+  .json-viewer-toolbar {
+    border-bottom-color: #2f3742;
+    background: rgba(17, 20, 24, 0.94);
+  }
+
+  .json-viewer-summary h1,
+  .json-viewer-pre {
+    color: #e6e8eb;
+  }
+
+  .json-viewer-summary p {
+    color: #9ba4b0;
+  }
+
+  .json-token-key {
+    color: #e9b872;
+  }
+
+  .json-token-string {
+    color: #76d3b5;
+  }
+
+  .json-token-number {
+    color: #8eb6ff;
+  }
+
+  .json-token-boolean {
+    color: #d690c2;
+  }
+
+  .json-token-null {
+    color: #9ba4b0;
+  }
+
+  .json-token-link:hover {
+    color: #99f6e4;
+  }
+}

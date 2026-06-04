@@ -1,28 +1,24 @@
 {
-  "name": "wxt-react-starter",
-  "description": "manifest.json description",
+  "name": "json-view-chrome-extension",
+  "description": "Pretty-print browser-rendered application/json responses.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "wxt",
-    "dev:firefox": "wxt -b firefox",
-    "build": "wxt build",
-    "build:firefox": "wxt build -b firefox",
-    "zip": "wxt zip",
-    "zip:firefox": "wxt zip -b firefox",
-    "compile": "tsc --noEmit",
-    "postinstall": "wxt prepare"
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   },
-  "dependencies": {
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+  "scripts": {
+    "dev": "npm run dev -w packages/extension",
+    "build": "npm run build -w packages/extension",
+    "lint": "biome check . && npm run lint:versions",
+    "lint:fix": "biome check . --fix && npm run lint:versions",
+    "lint:versions": "syncpack lint --dependency-types prod,dev",
+    "typecheck": "npm run typecheck -ws"
   },
   "devDependencies": {
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@wxt-dev/module-react": "^1.1.5",
-    "typescript": "^5.9.3",
-    "wxt": "^0.20.26"
+    "@biomejs/biome": "^2.4.4",
+    "syncpack": "^15.0.0"
   }
 }

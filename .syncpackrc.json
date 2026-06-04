@@ -1,0 +1,10 @@
+{
+  "versionGroups": [
+    {
+      "label": "Local monorepo packages must use the * wildcard",
+      "dependencies": ["$LOCAL"],
+      "dependencyTypes": ["prod", "dev"],
+      "pinVersion": "*"
+    }
+  ]
+}
