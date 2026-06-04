@@ -1,4 +1,4 @@
-import { prettifyJsonDocument } from "@/src/prettify";
+import { prettifyJsonDocument } from "@/src/render";
 
 const JSON_MIME_TYPE = "application/json";
 
