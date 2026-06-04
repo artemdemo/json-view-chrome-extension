@@ -1,6 +1,7 @@
 import { renderJsonViewer } from './render';
 
 const JSON_MIME_TYPE = 'application/json';
+const MAX_SAFE_SIZE = 2 * 1024 * 1024; // 2MB
 
 export const prettifyJsonDocument = async () => {
   if (normalizeMimeType(document.contentType) !== JSON_MIME_TYPE) {
@@ -9,6 +10,11 @@ export const prettifyJsonDocument = async () => {
 
   const source = getDocumentText(document);
   if (source.trim() === '') {
+    return;
+  }
+
+  if (source.length > MAX_SAFE_SIZE) {
+    console.warn('JSON document is too large to prettify safely.');
     return;
   }
 
