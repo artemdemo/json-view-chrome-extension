@@ -1,9 +1,8 @@
-import { FC, useEffect, useMemo, useRef, type ReactNode } from "react";
-import { formatBytes, getByteLength, getJsonKind } from "../services/summary";
+import { FC, useMemo, type ReactNode } from "react";
+import { formatBytes, getByteLength} from "../services/summary";
 import { getJsonStringUrl } from "../services/url";
-
-import "./JsonViewer.css";
 import { useStorage } from "@jview/storage";
+import "./JsonViewer.css";
 
 type JsonViewerProps = {
   jsonStr: string;
