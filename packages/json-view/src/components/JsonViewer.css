@@ -1,12 +1,8 @@
-html.json-view-extension-document,
-html.json-view-extension-document body {
+body {
   min-height: 100%;
   margin: 0;
   background: #f6f7f9;
   color: #17202a;
-}
-
-html.json-view-extension-document body {
   overflow: auto;
 }
 
@@ -105,8 +101,7 @@ html.json-view-extension-document body {
 }
 
 @media (prefers-color-scheme: dark) {
-  html.json-view-extension-document,
-  html.json-view-extension-document body {
+  body {
     background: #111418;
     color: #e6e8eb;
   }
