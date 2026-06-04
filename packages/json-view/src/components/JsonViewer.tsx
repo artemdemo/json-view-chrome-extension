@@ -1,8 +1,8 @@
 import { FC, useMemo, type ReactNode } from "react";
-import { formatBytes, getByteLength} from "../services/summary";
-import { getJsonStringUrl } from "../services/url";
+import { formatBytes, getByteLength } from "../services/summary";
 import { useStorage } from "@jview/storage";
 import "./JsonViewer.css";
+import { JsonToken } from "./JsonToken";
 
 type JsonViewerProps = {
   jsonStr: string;
@@ -13,10 +13,6 @@ export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
   const {
     settings: { wordWrap },
   } = useStorage();
-  const highlightedJson = useMemo(
-    () => renderHighlightedJson(jsonStr),
-    [jsonStr],
-  );
 
   return (
     <main className="json-viewer-root" data-json-viewer="true">
@@ -31,7 +27,7 @@ export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
           wordWrap ? "json-viewer-pre json-viewer-pre--wrap" : "json-viewer-pre"
         }
       >
-        <code>{highlightedJson}</code>
+        <code>{useMemo(() => renderHighlightedJson(jsonStr), [jsonStr])}</code>
       </pre>
     </main>
   );
@@ -50,7 +46,7 @@ const renderHighlightedJson = (json: string): ReactNode[] => {
       nodes.push(json.slice(lastIndex, match.index));
     }
 
-    nodes.push(renderJsonToken(match[0], tokenIndex));
+    nodes.push(<JsonToken token={match[0]} key={tokenIndex} />);
     lastIndex = match.index + match[0].length;
     tokenIndex += 1;
   }
@@ -60,49 +56,4 @@ const renderHighlightedJson = (json: string): ReactNode[] => {
   }
 
   return nodes;
-};
-
-const renderJsonToken = (token: string, key: number): ReactNode => {
-  const tokenType = getTokenType(token);
-
-  if (tokenType === "string") {
-    const href = getJsonStringUrl(token);
-
-    if (href !== undefined) {
-      return (
-        <span className="json-token json-token-string" key={key}>
-          "
-          <a
-            className="json-token-link"
-            href={href}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {token.slice(1, -1)}
-          </a>
-          "
-        </span>
-      );
-    }
-  }
-
-  return (
-    <span className={`json-token json-token-${tokenType}`} key={key}>
-      {token}
-    </span>
-  );
-};
-
-type TokenType = "number" | "key" | "string" | "boolean" | "null";
-
-const getTokenType = (token: string): TokenType => {
-  if (token.startsWith('"')) {
-    return token.endsWith(":") ? "key" : "string";
-  } else if (token === "true" || token === "false") {
-    return "boolean";
-  } else if (token === "null") {
-    return "null";
-  }
-
-  return "number";
 };
