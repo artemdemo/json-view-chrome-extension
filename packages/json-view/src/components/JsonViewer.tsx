@@ -12,7 +12,9 @@ type JsonViewerProps = {
 };
 
 export const JsonViewer: FC<JsonViewerProps> = ({ json, jsonStr, source }) => {
-  const { wordWrap } = useStorage();
+  const {
+    settings: { wordWrap },
+  } = useStorage();
   const copyResetTimeout = useRef<number | undefined>(undefined);
   const highlightedJson = useMemo(
     () => renderHighlightedJson(jsonStr),

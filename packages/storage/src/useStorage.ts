@@ -1,52 +1,12 @@
-import type { UserSettings } from '@jview/definitions';
-import { useCallback, useEffect, useState } from 'react';
-import { type Browser, browser } from 'wxt/browser';
-import {
-  defaultUserSettings,
-  loadUserSettings,
-  parseUserSettings,
-  USER_SETTINGS_STORAGE_KEY,
-} from './storage';
+import { useContext } from 'react';
+import { StorageContext } from './StorageProvider';
 
 export const useStorage = () => {
-  const [settings, setSettings] = useState<UserSettings>(defaultUserSettings);
+  const storage = useContext(StorageContext);
 
-  const handleStorageChange = useCallback(
-    (
-      changes: {
-        [key: string]: Browser.storage.StorageChange;
-      },
-      areaName: Browser.storage.AreaName,
-    ) => {
-      if (areaName !== 'local') {
-        return;
-      }
+  if (storage === undefined) {
+    throw new Error('useStorage must be used within a StorageProvider.');
+  }
 
-      if (!(USER_SETTINGS_STORAGE_KEY in changes)) {
-        return undefined;
-      }
-
-      setSettings((currentSettings) => ({
-        ...currentSettings,
-        ...parseUserSettings(changes[USER_SETTINGS_STORAGE_KEY].newValue),
-      }));
-    },
-    [],
-  );
-
-  useEffect(() => {
-    browser.storage.onChanged.addListener(handleStorageChange);
-
-    return () => {
-      browser.storage.onChanged.removeListener(handleStorageChange);
-    };
-  }, [handleStorageChange]);
-
-  useEffect(() => {
-    loadUserSettings().then((data) => {
-      setSettings(data);
-    });
-  }, []);
-
-  return settings;
+  return storage;
 };
