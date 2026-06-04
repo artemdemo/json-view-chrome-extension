@@ -38,7 +38,7 @@ export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
   );
 };
 
-function renderHighlightedJson(json: string): ReactNode[] {
+const renderHighlightedJson = (json: string): ReactNode[] => {
   const tokenPattern =
     /("(?:\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\btrue\b|\bfalse\b|\bnull\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g;
   const nodes: ReactNode[] = [];
@@ -61,18 +61,10 @@ function renderHighlightedJson(json: string): ReactNode[] {
   }
 
   return nodes;
-}
+};
 
-function renderJsonToken(token: string, key: number): ReactNode {
-  let tokenType = "number";
-
-  if (token.startsWith('"')) {
-    tokenType = token.endsWith(":") ? "key" : "string";
-  } else if (token === "true" || token === "false") {
-    tokenType = "boolean";
-  } else if (token === "null") {
-    tokenType = "null";
-  }
+const renderJsonToken = (token: string, key: number): ReactNode => {
+  const tokenType = getTokenType(token);
 
   if (tokenType === "string") {
     const href = getJsonStringUrl(token);
@@ -100,4 +92,18 @@ function renderJsonToken(token: string, key: number): ReactNode {
       {token}
     </span>
   );
-}
+};
+
+type TokenType = "number" | "key" | "string" | "boolean" | "null";
+
+const getTokenType = (token: string): TokenType => {
+  if (token.startsWith('"')) {
+    return token.endsWith(":") ? "key" : "string";
+  } else if (token === "true" || token === "false") {
+    return "boolean";
+  } else if (token === "null") {
+    return "null";
+  }
+
+  return "number";
+};
