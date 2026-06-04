@@ -1,5 +1,6 @@
 import { BrowserStorage } from "@jview/storage";
 import { JsonViewer } from "@jview/view";
+import React from "react";
 import { createRoot } from "react-dom/client";
 
 const MAX_SAFE_SIZE = 2 * 1024 * 1024; // 2MB
@@ -46,8 +47,10 @@ const renderJsonViewer = (jsonStr: string, source: string) => {
   document.body.replaceChildren(root);
 
   createRoot(root).render(
-    <BrowserStorage>
-      <JsonViewer jsonStr={jsonStr} source={source} />
-    </BrowserStorage>,
+    <React.StrictMode>
+      <BrowserStorage>
+        <JsonViewer jsonStr={jsonStr} source={source} />
+      </BrowserStorage>
+    </React.StrictMode>,
   );
 };
