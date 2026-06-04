@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { defaultUserSettings } from "./storage";
-import { IStorageStrategy } from "./stragegies/IStorageStrategy";
+import { IStorageStrategy } from "./strategies/IStorageStrategy";
 
 export type UserSettingsChangeListener = (settings: UserSettings) => void;
 
