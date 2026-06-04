@@ -19,7 +19,7 @@ export function Popup() {
       <h1>JSON View</h1>
       <p>Active on browser documents served as application/json.</p>
       <label className="popup-option">
-        <span>Word Wrap1</span>
+        <span>Word Wrap</span>
         <input
           checked={settings.wordWrap}
           onChange={handleWordWrapChange}
