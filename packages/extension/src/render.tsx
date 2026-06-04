@@ -1,5 +1,4 @@
-import { StorageProvider } from "@jview/storage";
-import { BrowserStorageStrategy } from "@jview/storage";
+import { BrowserStorage } from "@jview/storage";
 import { JsonViewer } from "@jview/view";
 import { createRoot } from "react-dom/client";
 
@@ -15,8 +14,8 @@ export function renderJsonViewer(
 
   document.body.replaceChildren(root);
   createRoot(root).render(
-    <StorageProvider strategy={new BrowserStorageStrategy()}>
+    <BrowserStorage>
       <JsonViewer json={json} jsonStr={jsonStr} source={source} />
-    </StorageProvider>,
+    </BrowserStorage>,
   );
 }
