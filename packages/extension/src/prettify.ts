@@ -1,13 +1,8 @@
 import { renderJsonViewer } from './render';
 
-const JSON_MIME_TYPE = 'application/json';
 const MAX_SAFE_SIZE = 2 * 1024 * 1024; // 2MB
 
 export const prettifyJsonDocument = async () => {
-  if (normalizeMimeType(document.contentType) !== JSON_MIME_TYPE) {
-    return;
-  }
-
   const source = getDocumentText(document);
   if (source.trim() === '') {
     return;
@@ -27,10 +22,6 @@ export const prettifyJsonDocument = async () => {
     console.error(`Can't parse provided JSON`);
     console.error(e);
   }
-};
-
-const normalizeMimeType = (contentType: string): string => {
-  return contentType.split(';', 1)[0].trim().toLowerCase();
 };
 
 const getDocumentText = (doc: Document): string => {
