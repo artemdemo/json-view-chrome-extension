@@ -6,12 +6,11 @@ import "./JsonViewer.css";
 import { useStorage } from "@jview/storage";
 
 type JsonViewerProps = {
-  json: unknown;
   jsonStr: string;
   source: string;
 };
 
-export const JsonViewer: FC<JsonViewerProps> = ({ json, jsonStr, source }) => {
+export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
   const {
     settings: { wordWrap },
   } = useStorage();
@@ -24,9 +23,7 @@ export const JsonViewer: FC<JsonViewerProps> = ({ json, jsonStr, source }) => {
     <main className="json-viewer-root" data-json-viewer="true">
       <header className="json-viewer-toolbar">
         <div className="json-viewer-summary">
-          <p>
-            {getJsonKind(json)} - {formatBytes(getByteLength(source))}
-          </p>
+          <p>{formatBytes(getByteLength(source))}</p>
         </div>
       </header>
 

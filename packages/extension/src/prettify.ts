@@ -17,7 +17,7 @@ export const prettifyJsonDocument = async () => {
     const json = JSON.parse(source) as unknown;
     const prettyJson = JSON.stringify(json, null, 2);
 
-    renderJsonViewer(prettyJson, json, source);
+    renderJsonViewer(prettyJson, source);
   } catch (e) {
     console.error(`Can't parse provided JSON`);
     console.error(e);

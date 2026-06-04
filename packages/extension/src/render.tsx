@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 
 export function renderJsonViewer(
   jsonStr: string,
-  json: unknown,
   source: string,
 ) {
   document.documentElement.classList.add("json-view-extension-document");
@@ -15,7 +14,7 @@ export function renderJsonViewer(
   document.body.replaceChildren(root);
   createRoot(root).render(
     <BrowserStorage>
-      <JsonViewer json={json} jsonStr={jsonStr} source={source} />
+      <JsonViewer jsonStr={jsonStr} source={source} />
     </BrowserStorage>,
   );
 }
