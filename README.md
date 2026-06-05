@@ -23,3 +23,4 @@ npm run build
 
 * `JsonViewer` - pass `json` object, since you need to parse it anyways
   * If `json` can't be parsed there there is no reason to replace DOM.
+* Let's try to use `lit` framework (`lit-html`)
