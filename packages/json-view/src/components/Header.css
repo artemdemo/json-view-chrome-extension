@@ -1,0 +1,35 @@
+.json-viewer-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 18px;
+  border-bottom: 1px solid #d7dce2;
+  background: rgba(246, 247, 249, 0.94);
+  backdrop-filter: blur(12px);
+}
+
+.json-viewer-summary {
+  min-width: 0;
+}
+
+.json-viewer-summary p {
+  margin: 2px 0 0;
+  color: #5d6877;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@media (prefers-color-scheme: dark) {
+  .json-viewer-toolbar {
+    border-bottom-color: #2f3742;
+    background: rgba(17, 20, 24, 0.94);
+  }
+
+  .json-viewer-summary p {
+    color: #9ba4b0;
+  }
+}

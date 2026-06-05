@@ -1,8 +1,8 @@
-import { FC, useMemo, type ReactNode } from "react";
+import { type FC, useMemo, type ReactNode } from "react";
 import { useStorage } from "@jview/storage";
 import clsx from "clsx";
-import { formatBytes, getByteLength } from "../services/summary";
 import { JsonToken } from "./JsonToken";
+import { Header } from "./Header";
 import "./JsonViewer.css";
 
 type JsonViewerProps = {
@@ -17,11 +17,7 @@ export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
 
   return (
     <main className="json-viewer-root">
-      <header className="json-viewer-toolbar">
-        <div className="json-viewer-summary">
-          <p>{formatBytes(getByteLength(source))}</p>
-        </div>
-      </header>
+      <Header size={useMemo(() => new Blob([source]).size, [source])} />
 
       <pre
         className={clsx({
