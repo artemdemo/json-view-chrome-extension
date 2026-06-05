@@ -22,7 +22,6 @@
     "@jview/popup": "*",
     "@jview/storage": "*",
     "@jview/view": "*",
-    "@wxt-dev/auto-icons": "^1.1.1",
     "typescript": "^5.9.3",
     "wxt": "^0.20.26"
   }
