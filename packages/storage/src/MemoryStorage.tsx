@@ -1,8 +1,8 @@
-import type { UserSettings } from '@jview/definitions';
-import type { ComponentChildren } from 'preact';
-import { useMemo } from 'preact/hooks';
-import { StorageProvider } from '../../../storage/src/StorageProvider';
-import type { IStorageStrategy } from '../../../storage/src/strategies/IStorageStrategy';
+import type { UserSettings } from "@jview/definitions";
+import type { ComponentChildren } from "preact";
+import { useMemo } from "preact/hooks";
+import { IStorageStrategy } from "./strategies/IStorageStrategy";
+import { StorageProvider } from "./StorageProvider";
 
 type MemoryStorageProps = {
   children: ComponentChildren;
