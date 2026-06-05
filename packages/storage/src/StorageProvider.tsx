@@ -1,12 +1,11 @@
 import type { UserSettings } from "@jview/definitions";
+import { createContext, type ComponentChildren } from "preact";
 import {
-  createContext,
-  type ReactNode,
   useCallback,
   useEffect,
   useMemo,
   useState,
-} from "react";
+} from "preact/hooks";
 import { defaultUserSettings } from "./storage";
 import { IStorageStrategy } from "./strategies/IStorageStrategy";
 
@@ -18,7 +17,7 @@ export type StorageContextValue = {
 };
 
 type StorageProviderProps = {
-  children: ReactNode;
+  children: ComponentChildren;
   strategy: IStorageStrategy;
 };
 

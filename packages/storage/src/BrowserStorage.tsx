@@ -1,8 +1,13 @@
-import { FC, PropsWithChildren, useMemo } from "react";
+import type { ComponentChildren } from "preact";
+import { useMemo } from "preact/hooks";
 import { StorageProvider } from "./StorageProvider";
 import { BrowserStorageStrategy } from "./strategies/BrowserStorageStrategy";
 
-export const BrowserStorage: FC<PropsWithChildren> = ({ children }) => {
+type BrowserStorageProps = {
+  children?: ComponentChildren;
+};
+
+export const BrowserStorage = ({ children }: BrowserStorageProps) => {
   return (
     <StorageProvider strategy={useMemo(() => new BrowserStorageStrategy(), [])}>
       {children}

@@ -1,12 +1,14 @@
 import { useStorage } from "@jview/storage";
-import { type ChangeEvent } from "react";
+import type { TargetedEvent } from "preact";
 import "./Popup.css";
 
 export function Popup() {
   const { settings, saveUserSettings } = useStorage();
 
-  const handleWordWrapChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const nextWordWrap = event.target.checked;
+  const handleWordWrapChange = (
+    event: TargetedEvent<HTMLInputElement, Event>,
+  ) => {
+    const nextWordWrap = event.currentTarget.checked;
 
     void saveUserSettings({
       ...settings,

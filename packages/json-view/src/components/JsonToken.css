@@ -1,0 +1,57 @@
+
+.json-token-key {
+  color: #7a4f00;
+}
+
+.json-token-string {
+  color: #12634f;
+}
+
+.json-token-number {
+  color: #164da3;
+}
+
+.json-token-boolean {
+  color: #8f3f71;
+}
+
+.json-token-null {
+  color: #667085;
+}
+
+.json-token-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.json-token-link:hover {
+  color: #0f766e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .json-token-key {
+    color: #e9b872;
+  }
+
+  .json-token-string {
+    color: #76d3b5;
+  }
+
+  .json-token-number {
+    color: #8eb6ff;
+  }
+
+  .json-token-boolean {
+    color: #d690c2;
+  }
+
+  .json-token-null {
+    color: #9ba4b0;
+  }
+
+  .json-token-link:hover {
+    color: #99f6e4;
+  }
+}
