@@ -26,4 +26,5 @@ npm run build
 * What about extension icon?
 * Tests
 * Let's try to use `lit` framework (`lit-html`)
+  * https://lit.dev/
   * Smaller than `preact`?
