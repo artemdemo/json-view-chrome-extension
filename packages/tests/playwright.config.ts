@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import { fileURLToPath } from 'node:url';
+
+const testsRoot = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
   // Look for test files in the "tests" directory, relative to this configuration file.
@@ -18,6 +21,13 @@ export default defineConfig({
 
   // Reporter to use
   reporter: 'html',
+
+  webServer: {
+    command: 'vite --host 127.0.0.1 --port 3000',
+    cwd: testsRoot,
+    port: 3000,
+    reuseExistingServer: !process.env.CI,
+  },
 
   use: {
     // Base URL to use in actions like `await page.goto('/')`.
