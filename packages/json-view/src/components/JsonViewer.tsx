@@ -1,6 +1,7 @@
-import { type FC, useMemo, type ReactNode } from "react";
 import { useStorage } from "@jview/storage";
 import clsx from "clsx";
+import type { ComponentChild } from "preact";
+import { useMemo } from "preact/hooks";
 import { JsonToken } from "./JsonToken";
 import { Header } from "./Header";
 import "./JsonViewer.css";
@@ -10,7 +11,7 @@ type JsonViewerProps = {
   source: string;
 };
 
-export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
+export const JsonViewer = ({ jsonStr, source }: JsonViewerProps) => {
   const {
     settings: { wordWrap },
   } = useStorage();
@@ -31,10 +32,10 @@ export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
   );
 };
 
-const renderHighlightedJson = (json: string): ReactNode[] => {
+const renderHighlightedJson = (json: string): ComponentChild[] => {
   const tokenPattern =
     /("(?:\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\btrue\b|\bfalse\b|\bnull\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g;
-  const nodes: ReactNode[] = [];
+  const nodes: ComponentChild[] = [];
   let lastIndex = 0;
   let tokenIndex = 0;
   let match: RegExpExecArray | null;

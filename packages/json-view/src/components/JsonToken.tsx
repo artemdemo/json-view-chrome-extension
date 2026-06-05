@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { getJsonStringUrl } from "../services/url";
 import "./JsonToken.css";
 
@@ -6,7 +5,7 @@ type JsonTokenProps = {
   token: string;
 };
 
-export const JsonToken: FC<JsonTokenProps> = ({ token }) => {
+export const JsonToken = ({ token }: JsonTokenProps) => {
   const tokenType = getTokenType(token);
 
   if (tokenType === "string") {

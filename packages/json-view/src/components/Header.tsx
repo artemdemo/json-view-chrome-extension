@@ -1,11 +1,11 @@
-import { useMemo, type FC } from "react";
+import { useMemo } from "preact/hooks";
 import "./Header.css";
 
 type HeaderProps = {
   size: number;
 };
 
-export const Header: FC<HeaderProps> = ({ size }) => {
+export const Header = ({ size }: HeaderProps) => {
   return (
     <header className="json-viewer-toolbar">
       <div className="json-viewer-summary">

@@ -10,11 +10,10 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "react": "^19.2.4",
-    "@jview/definitions": "*"
+    "@jview/definitions": "*",
+    "preact": "^10.29.1"
   },
   "devDependencies": {
-    "@types/react": "^19.2.14",
     "wxt": "^0.20.26",
     "typescript": "^5.9.3"
   }
