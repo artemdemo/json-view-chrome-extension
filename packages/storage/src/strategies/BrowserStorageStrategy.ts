@@ -9,8 +9,6 @@ import {
 import type { IStorageStrategy } from './IStorageStrategy';
 
 export class BrowserStorageStrategy implements IStorageStrategy {
-  readonly initialSettings = defaultUserSettings;
-
   async saveUserSettings(settings: UserSettings): Promise<void> {
     try {
       await browser.storage?.local?.set({
