@@ -1,6 +1,7 @@
 import { FC, useMemo, type ReactNode } from "react";
-import { formatBytes, getByteLength } from "../services/summary";
 import { useStorage } from "@jview/storage";
+import clsx from "clsx";
+import { formatBytes, getByteLength } from "../services/summary";
 import { JsonToken } from "./JsonToken";
 import "./JsonViewer.css";
 
@@ -15,7 +16,7 @@ export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
   } = useStorage();
 
   return (
-    <main className="json-viewer-root" data-json-viewer="true">
+    <main className="json-viewer-root">
       <header className="json-viewer-toolbar">
         <div className="json-viewer-summary">
           <p>{formatBytes(getByteLength(source))}</p>
@@ -23,9 +24,10 @@ export const JsonViewer: FC<JsonViewerProps> = ({ jsonStr, source }) => {
       </header>
 
       <pre
-        className={
-          wordWrap ? "json-viewer-pre json-viewer-pre--wrap" : "json-viewer-pre"
-        }
+        className={clsx({
+          "json-viewer-pre": true,
+          "json-viewer-pre--wrap": wordWrap,
+        })}
       >
         <code>{useMemo(() => renderHighlightedJson(jsonStr), [jsonStr])}</code>
       </pre>
