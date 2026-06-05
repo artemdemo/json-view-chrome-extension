@@ -1,15 +1,3 @@
-export const getJsonKind = (value: unknown): string => {
-  if (Array.isArray(value)) {
-    return `array (${value.length})`;
-  }
-
-  if (value !== null && typeof value === 'object') {
-    return `object (${Object.keys(value).length})`;
-  }
-
-  return value === null ? 'null' : typeof value;
-};
-
 export const getByteLength = (value: string): number => {
   return new Blob([value]).size;
 };
