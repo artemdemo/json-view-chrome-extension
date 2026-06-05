@@ -21,6 +21,4 @@ npm run build
 
 # ToDo
 
-* `JsonViewer` - pass `json` object, since you need to parse it anyways
-  * If `json` can't be parsed there there is no reason to replace DOM.
-* Tests
+* Add some tests

@@ -16,10 +16,9 @@ export const prettifyJsonDocument = async () => {
   }
 
   try {
-    const json = JSON.parse(source) as unknown;
-    const prettyJson = JSON.stringify(json, null, 2);
+    const json = JSON.parse(source);
 
-    renderJsonViewer(prettyJson, source);
+    renderJsonViewer(json, source);
   } catch (e) {
     console.error(`Can't parse provided JSON`);
     console.error(e);
@@ -40,14 +39,14 @@ const getDocumentText = (doc: Document): string => {
   return body.textContent ?? "";
 };
 
-const renderJsonViewer = (jsonStr: string, source: string) => {
+const renderJsonViewer = (json: unknown, source: string) => {
   const root = document.createElement("div");
 
   document.body.replaceChildren(root);
 
   render(
     <BrowserStorage>
-      <JsonViewer jsonStr={jsonStr} source={source} />
+      <JsonViewer json={json} source={source} />
     </BrowserStorage>,
     root,
   );

@@ -7,18 +7,23 @@ import { Header } from "./Header";
 import "./JsonViewer.css";
 
 type JsonViewerProps = {
-  jsonStr: string;
+  json: unknown;
   source: string;
 };
 
-export const JsonViewer = ({ jsonStr, source }: JsonViewerProps) => {
+export const JsonViewer = ({ json, source }: JsonViewerProps) => {
   const {
     settings: { wordWrap },
   } = useStorage();
+  const sourceSize = useMemo(() => new Blob([source]).size, [source]);
+  const highlightedJson = useMemo(
+    () => renderHighlightedJson(JSON.stringify(json, null, 2)),
+    [json],
+  );
 
   return (
     <main className="json-viewer-root">
-      <Header size={useMemo(() => new Blob([source]).size, [source])} />
+      <Header size={sourceSize} />
 
       <pre
         className={clsx({
@@ -26,7 +31,7 @@ export const JsonViewer = ({ jsonStr, source }: JsonViewerProps) => {
           "json-viewer-pre--wrap": wordWrap,
         })}
       >
-        <code>{useMemo(() => renderHighlightedJson(jsonStr), [jsonStr])}</code>
+        <code>{highlightedJson}</code>
       </pre>
     </main>
   );
