@@ -6,10 +6,12 @@ type HeaderProps = {
 };
 
 export const Header = ({ size }: HeaderProps) => {
+  const formattedSize = useMemo(() => formatBytes(size), [size]);
+
   return (
     <header className="json-viewer-toolbar">
       <div className="json-viewer-summary">
-        <p>{useMemo(() => formatBytes(size), [size])}</p>
+        <p>{formattedSize}</p>
       </div>
     </header>
   );

@@ -2,7 +2,10 @@ import { prettifyJsonDocument } from "@/src/render";
 
 const JSON_MIME_TYPE = "application/json";
 
-const normalizeMimeType = (contentType: string): string => {
+const normalizeMimeType = (contentType: string | undefined | null): string => {
+  if (!contentType) {
+    return "";
+  }
   return contentType.split(";", 1)[0].trim().toLowerCase();
 };
 
