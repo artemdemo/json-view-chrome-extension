@@ -36,3 +36,4 @@ npm run build
 # ToDo
 
 * Add some tests
+* Add knip
