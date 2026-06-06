@@ -1,17 +1,15 @@
 import { expect, test } from '@playwright/test';
 
-test('renders highlighted JSON content', async ({ page }) => {
-  await page.goto('/entries/json-viewer.html');
+test.describe('JSON view', () => {
+  test('renders highlighted JSON content (light)', async ({ page }) => {
+    await page.goto('/entries/json-viewer.html');
+    await page.emulateMedia({ colorScheme: 'light' });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
+  });
 
-  const code = page.locator('pre code');
-
-  await expect(code).toContainText('"title": "Example JSON"');
-  await expect(code).toContainText('"count": 2');
-  await expect(code).toContainText('"active": true');
-  await expect(code).toContainText('"optional": null');
-
-  await expect(
-    page.getByRole('link', { name: 'https://example.com/json-viewer' }),
-  ).toHaveAttribute('href', 'https://example.com/json-viewer');
-  await expect(page.locator('pre')).toHaveClass(/json-viewer-pre--wrap/);
+  test('renders highlighted JSON content (dark)', async ({ page }) => {
+    await page.goto('/entries/json-viewer.html');
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
+  });
 });

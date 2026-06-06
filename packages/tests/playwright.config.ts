@@ -1,11 +1,11 @@
-import { defineConfig, devices } from '@playwright/test';
-import { fileURLToPath } from 'node:url';
+import { defineConfig, devices } from "@playwright/test";
+import { fileURLToPath } from "node:url";
 
-const testsRoot = fileURLToPath(new URL('.', import.meta.url));
+const testsRoot = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
   // Look for test files in the "tests" directory, relative to this configuration file.
-  testDir: 'src',
+  testDir: "src",
 
   // Run all tests in parallel.
   fullyParallel: true,
@@ -20,10 +20,10 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   // Reporter to use
-  reporter: 'html',
+  reporter: "html",
 
   webServer: {
-    command: 'vite --host 127.0.0.1 --port 3000',
+    command: "vite --host 127.0.0.1 --port 3000",
     cwd: testsRoot,
     port: 3000,
     reuseExistingServer: !process.env.CI,
@@ -31,16 +31,19 @@ export default defineConfig({
 
   use: {
     // Base URL to use in actions like `await page.goto('/')`.
-    baseURL: 'http://localhost:3000',
+    baseURL: "http://localhost:3000",
 
     // Collect trace when retrying the failed test.
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
   },
   // Configure projects for major browsers.
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 800, height: 600 },
+      },
     },
   ],
 });
