@@ -20,4 +20,11 @@ test.describe('popup', () => {
 
     await expect(wordWrap).toBeChecked();
   });
+
+  test('test design (light)', async ({ page }) => {
+    await page.goto('/entries/popup.html');
+    await page.setViewportSize({ width: 400, height: 300 });
+    await page.emulateMedia({ colorScheme: 'light' });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
+  });
 });
