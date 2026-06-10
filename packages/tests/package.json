@@ -13,7 +13,7 @@
     "@jview/view": "*",
     "@types/node": "^24.0.0",
     "@playwright/test": "^1.60.0",
-    "playwright": "^1.59.1",
+    "playwright": "^1.60.0",
     "outdent": "^0.8.0",
     "preact": "^10.29.1",
     "typescript": "^5.9.3"
