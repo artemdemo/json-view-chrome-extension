@@ -1,18 +1,22 @@
 import type { UserSettings } from '@jview/definitions';
 import type { IStorageStrategy } from './IStorageStrategy';
 
-export class MemoryStorageStrategy implements IStorageStrategy {
-  #settings: UserSettings;
+declare global {
+  interface Window {
+    __strategy: UserSettings;
+  }
+}
 
+export class MemoryStorageStrategy implements IStorageStrategy {
   constructor(initialSettings: UserSettings) {
-    this.#settings = initialSettings;
+    window.__strategy = window.__strategy || initialSettings;
   }
 
   async loadUserSettings(): Promise<UserSettings> {
-    return this.#settings;
+    return window.__strategy;
   }
 
   async saveUserSettings(settings: UserSettings): Promise<void> {
-    this.#settings = settings;
+    window.__strategy = settings;
   }
 }
