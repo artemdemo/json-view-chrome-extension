@@ -1,4 +1,6 @@
-# JSON view Chrome Extension
+# JSON View - Chrome Extension
+
+![JSON View](./packages/extension/public/icon-128.png)
 
 Chrome extension built with WXT. It prettifies the top-level browser document
 only when the response MIME type is `application/json`.
@@ -36,3 +38,4 @@ npm run build
 # ToDo
 
 * Add some tests
+* Add knip

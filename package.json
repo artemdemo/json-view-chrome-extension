@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "npm run dev -w packages/extension",
     "build": "npm run build -w packages/extension",
+    "test": "npm run test -w packages/tests",
     "lint": "biome check . && npm run lint:versions",
     "lint:fix": "biome check . --fix && npm run lint:versions",
     "lint:versions": "syncpack lint --dependency-types prod,dev",
