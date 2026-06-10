@@ -13,13 +13,14 @@ const json = {
 };
 
 const root = document.getElementById("root");
+const wordWrap = new URLSearchParams(window.location.search).has("wordwrap");
 
 if (root === null) {
   throw new Error("Missing root element.");
 }
 
 render(
-  <MemoryStorage initialSettings={{ wordWrap: false }}>
+  <MemoryStorage initialSettings={{ wordWrap }}>
     <JsonViewer json={json} source={JSON.stringify(json)} />
   </MemoryStorage>,
   root,

@@ -7,6 +7,12 @@ test.describe('JSON view', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
   });
 
+  test('renders highlighted JSON content with wordwrap (light)', async ({ page }) => {
+    await page.goto('/entries/json-viewer.html?wordwrap=true');
+    await page.emulateMedia({ colorScheme: 'light' });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
+  });
+
   test('renders highlighted JSON content (dark)', async ({ page }) => {
     await page.goto('/entries/json-viewer.html');
     await page.emulateMedia({ colorScheme: 'dark' });
