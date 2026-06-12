@@ -1,12 +1,14 @@
 import type { UserSettings } from '@jview/definitions';
 import { type Browser, browser } from 'wxt/browser';
-import type { UserSettingsChangeListener } from '../StorageProvider';
 import {
   defaultUserSettings,
   parseUserSettings,
   USER_SETTINGS_STORAGE_KEY,
 } from '../storage';
-import type { IStorageStrategy } from './IStorageStrategy';
+import type {
+  IStorageStrategy,
+  UserSettingsChangeListener,
+} from './IStorageStrategy';
 
 export class BrowserStorageStrategy implements IStorageStrategy {
   async saveUserSettings(settings: UserSettings): Promise<void> {

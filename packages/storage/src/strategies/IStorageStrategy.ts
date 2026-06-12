@@ -1,11 +1,12 @@
 import type { UserSettings } from '@jview/definitions';
-import type { UserSettingsChangeListener } from '../StorageProvider';
+
+export type UserSettingsChangeListener = (settings: UserSettings) => void;
 
 export interface IStorageStrategy {
   initialSettings?: UserSettings;
   loadUserSettings(): Promise<UserSettings>;
   saveUserSettings(settings: UserSettings): Promise<void>;
-  subscribeToUserSettingsChanges?(
+  subscribeToUserSettingsChanges(
     listener: UserSettingsChangeListener,
   ): () => void;
 }
