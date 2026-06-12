@@ -12,7 +12,7 @@ declare global {
 }
 
 export class MemoryStorageStrategy implements IStorageStrategy {
-  private _onSettingsChange: UserSettingsChangeListener | undefined;
+  private _listeners = new Set<UserSettingsChangeListener>();
 
   constructor(initialSettings: UserSettings) {
     window.__userSettings = window.__userSettings || initialSettings;
@@ -27,15 +27,17 @@ export class MemoryStorageStrategy implements IStorageStrategy {
 
   async saveUserSettings(settings: UserSettings): Promise<void> {
     window.__userSettings = settings;
-    this._onSettingsChange?.(settings);
+    this._listeners.forEach((listener) => {
+      listener(settings);
+    });
   }
 
   subscribeToUserSettingsChanges(
     onSettingsChange: UserSettingsChangeListener,
   ): () => void {
-    this._onSettingsChange = onSettingsChange;
+    this._listeners.add(onSettingsChange);
     return () => {
-      this._onSettingsChange = undefined;
+      this._listeners.delete(onSettingsChange);
     };
   }
 }
