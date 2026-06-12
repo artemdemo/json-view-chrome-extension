@@ -2,6 +2,7 @@ import { MemoryStorage } from "@jview/storage";
 import { JsonViewer } from "@jview/view";
 import { Popup } from "@jview/popup";
 import { render } from "preact";
+import { TestBridge } from "./TestBridge";
 
 const json = {
   title: "Example JSON",
@@ -34,6 +35,7 @@ render(
           return `Not know view, got "${view}"`;
       }
     })()}
+    <TestBridge />
   </MemoryStorage>,
   root,
 );
