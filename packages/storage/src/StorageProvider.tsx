@@ -1,15 +1,8 @@
 import type { UserSettings } from "@jview/definitions";
 import { createContext, type ComponentChildren } from "preact";
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "preact/hooks";
+import { useCallback, useEffect, useMemo, useState } from "preact/hooks";
 import { defaultUserSettings } from "./storage";
 import { IStorageStrategy } from "./strategies/IStorageStrategy";
-
-export type UserSettingsChangeListener = (settings: UserSettings) => void;
 
 export type StorageContextValue = {
   settings: UserSettings;
@@ -44,7 +37,7 @@ export function StorageProvider({ children, strategy }: StorageProviderProps) {
         console.error(e);
       });
 
-    const unsubscribe = strategy.subscribeToUserSettingsChanges?.(
+    const unsubscribe = strategy.subscribeToUserSettingsChanges(
       (nextSettings) => {
         if (isActive) {
           setSettings(nextSettings);

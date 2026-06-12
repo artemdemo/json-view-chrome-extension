@@ -1,6 +1,8 @@
 import { MemoryStorage } from "@jview/storage";
 import { JsonViewer } from "@jview/view";
+import { Popup } from "@jview/popup";
 import { render } from "preact";
+import { TestBridge } from "./TestBridge";
 
 const json = {
   title: "Example JSON",
@@ -13,15 +15,27 @@ const json = {
 };
 
 const root = document.getElementById("root");
-const wordWrap = new URLSearchParams(window.location.search).has("wordwrap");
+const view: string | null = new URLSearchParams(window.location.search).get(
+  "view",
+);
 
 if (root === null) {
   throw new Error("Missing root element.");
 }
 
 render(
-  <MemoryStorage initialSettings={{ wordWrap }}>
-    <JsonViewer json={json} source={JSON.stringify(json)} />
+  <MemoryStorage>
+    {(() => {
+      switch (view) {
+        case "view":
+          return <JsonViewer json={json} source={JSON.stringify(json)} />;
+        case "popup":
+          return <Popup />;
+        default:
+          return `Not know view, got "${view}"`;
+      }
+    })()}
+    <TestBridge />
   </MemoryStorage>,
   root,
 );

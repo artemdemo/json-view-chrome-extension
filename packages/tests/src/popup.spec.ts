@@ -1,8 +1,10 @@
 import { expect, test } from '@playwright/test';
+import { setupDriver } from './infra/driver';
 
 test.describe('popup', () => {
   test('renders the popup settings UI', async ({ page }) => {
-    await page.goto('/entries/popup.html');
+    const { browser } = setupDriver({ page });
+    await browser.open('popup');
 
     await expect(
       page.getByRole('heading', { name: 'JSON View' }),
@@ -22,9 +24,20 @@ test.describe('popup', () => {
   });
 
   test('test design (light)', async ({ page }) => {
-    await page.goto('/entries/popup.html');
+    const { browser } = setupDriver({ page });
+    await browser.open('popup');
+
     await page.setViewportSize({ width: 400, height: 300 });
     await page.emulateMedia({ colorScheme: 'light' });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
+  });
+
+  test('test design (dark)', async ({ page }) => {
+    const { browser } = setupDriver({ page });
+    await browser.open('popup');
+
+    await page.setViewportSize({ width: 400, height: 300 });
+    await page.emulateMedia({ colorScheme: 'dark' });
     await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
   });
 });

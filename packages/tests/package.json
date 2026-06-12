@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "test": "playwright test",
+    "test:upd": "playwright test --update-snapshots",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "devDependencies": {
