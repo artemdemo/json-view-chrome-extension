@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 
-type ViewName = 'view';
+type ViewName = 'view' | 'popup';
 
 export const createBrowserDriver = ({ page }: { page: Page }) => {
   return {

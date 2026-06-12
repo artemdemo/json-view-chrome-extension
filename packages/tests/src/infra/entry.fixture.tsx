@@ -1,5 +1,6 @@
 import { MemoryStorage } from "@jview/storage";
 import { JsonViewer } from "@jview/view";
+import { Popup } from "@jview/popup";
 import { render } from "preact";
 
 const json = {
@@ -27,6 +28,8 @@ render(
       switch (view) {
         case "view":
           return <JsonViewer json={json} source={JSON.stringify(json)} />;
+        case "popup":
+          return <Popup />;
         default:
           return `Not know view, got "${view}"`;
       }
