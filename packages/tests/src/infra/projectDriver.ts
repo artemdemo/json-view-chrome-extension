@@ -5,7 +5,8 @@ export const createProjectDriver = ({ page }: { page: Page }) => {
   return {
     setSettings: async (settings: UserSettings) => {
       await page.evaluate(
-        `window.__sendEvent({ settings: ${JSON.stringify(settings)} })`,
+        (s) => window.__sendEvent?.({ settings: s }),
+        settings,
       );
     },
   };

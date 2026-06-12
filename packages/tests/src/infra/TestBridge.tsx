@@ -22,7 +22,7 @@ export const TestBridge = () => {
       unsubListenToEvent();
       window.__sendEvent = undefined;
     };
-  }, []);
+  }, [saveUserSettings]);
 
   return null;
 };
