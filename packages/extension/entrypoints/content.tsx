@@ -17,15 +17,17 @@ export default defineContentScript({
       return;
     }
 
-    // Hide the browser-rendered source before its first paint. The body is not
-    // available yet at document_start, so rendering waits for DOMContentLoaded.
-    document.documentElement.style.visibility = "hidden";
+    if (document.documentElement) {
+      // Hide the browser-rendered source before its first paint. The body is not
+      // available yet at document_start, so rendering waits for DOMContentLoaded.
+      document.documentElement.style.visibility = "hidden";
+    }
 
     const prettifyAndReveal = async () => {
       try {
         await prettifyJsonDocument();
       } finally {
-        document.documentElement.style.removeProperty("visibility");
+        document.documentElement?.style.removeProperty("visibility");
       }
     };
 
