@@ -5,6 +5,8 @@
 Chrome extension built with WXT. It prettifies the top-level browser document
 only when the response MIME type is `application/json`.
 
+![JSON View screenshot](./screenshot.png)
+
 Mock JSON endpoint:
 
 https://jsonplaceholder.typicode.com/todos/1
@@ -18,6 +20,7 @@ Current extension parts:
 - `@jview/popup`: popup settings UI.
 - `@jview/storage`: storage context and browser storage strategy.
 - `@jview/definitions`: shared `UserSettings` schema and type.
+- `@jview/tests`: tests
 
 There is no background script or service worker.
 
