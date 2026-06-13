@@ -1,5 +1,5 @@
 {
-  "name": "@taskvoid/tests",
+  "name": "@jview/tests",
   "type": "module",
   "private": true,
   "scripts": {

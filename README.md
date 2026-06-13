@@ -2,22 +2,27 @@
 
 ![JSON View](./packages/extension/public/icon-128.png)
 
-Chrome extension built with WXT. It prettifies the top-level browser document
-only when the response MIME type is `application/json`.
+A minimal Chrome extension for reading raw JSON responses in the browser.
 
-Mock JSON endpoint:
+JSON View only activates when the top-level browser document is served as `application/json`.
+It replaces the browser’s plain JSON output with a clean, syntax-highlighted view that supports OS light/dark theme, word wrap, file size display, and clickable HTTP/HTTPS links inside JSON strings.
+
+![JSON View screenshot](./screenshot.png)
+
+Try it with a mock JSON endpoint:
 
 https://jsonplaceholder.typicode.com/todos/1
 
 ## Architecture
 
-Current extension parts:
+The project is organized as a small monorepo:
 
-- `@jview/extension`: WXT extension shell, content script, popup entrypoint, and JSON page rendering bootstrap.
-- `@jview/view`: JSON rendering UI and token/link highlighting.
+- `@jview/extension`: WXT extension shell, content script, popup entrypoint, and JSON rendering bootstrap.
+- `@jview/view`: JSON rendering UI, syntax highlighting, link detection, and viewer layout.
 - `@jview/popup`: popup settings UI.
-- `@jview/storage`: storage context and browser storage strategy.
-- `@jview/definitions`: shared `UserSettings` schema and type.
+- `@jview/storage`: settings storage context and browser storage strategy.
+- `@jview/definitions`: shared settings schema and TypeScript types.
+- `@jview/tests`: Playwright tests and visual snapshots.
 
 There is no background script or service worker.
 
