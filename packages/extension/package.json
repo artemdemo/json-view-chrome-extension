@@ -23,6 +23,7 @@
     "@jview/storage": "*",
     "@jview/view": "*",
     "typescript": "^5.9.3",
-    "wxt": "^0.20.26"
+    "web-ext": "^10.6.0",
+    "wxt": "^0.21.4"
   }
 }
